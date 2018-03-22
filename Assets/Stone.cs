@@ -11,8 +11,8 @@ public class Stone : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        
-	}
+        rigid2D = GetComponent<Rigidbody2D>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -58,14 +58,10 @@ public class Stone : MonoBehaviour {
 
     void GetMouseButtonUp()
     {
-        //制限速度以下だったら、
-        if (rigid2D.velocity.y < maxWalkSpeed)
-        {
-            //-Y座標方向へ飛ぶ。                        //-Y座標方向に動かないどうして？
-                //加速度
-            rigid2D.AddForce(Vector2.down * 2);
-                //位置変更
-            rigid2D.position =- Vector2.down * 0.1f;
-        }
+        //-Y座標方向へ飛ぶ。           //力
+        rigid2D.AddForce(Vector2.down * 500);
+
+        //徐々に加速を落とす
+        for (Vector2 i; rigid2D.velocity =< i; i=rigid2D.velocity - i)
     }
 }
