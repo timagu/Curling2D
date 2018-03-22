@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Stone : MonoBehaviour {
 
-    Rigidbody2D rigidbody2D;
+    Rigidbody2D rigid2D;
     
     //制限速度
-    float maxWalkSpeed = 3f;
+    float maxWalkSpeed = 3.0f;
 
     // Use this for initialization
     void Start () {
@@ -59,11 +59,13 @@ public class Stone : MonoBehaviour {
     void GetMouseButtonUp()
     {
         //制限速度以下だったら、
-        if (rigidbody2D.velocity.x < maxWalkSpeed)
+        if (rigid2D.velocity.y < maxWalkSpeed)
         {
             //-Y座標方向へ飛ぶ。                        //-Y座標方向に動かないどうして？
-            rigidbody2D.AddForce(Vector2.down * 2);
-            //transform.position =- new Vector2(0,1);
+                //加速度
+            rigid2D.AddForce(Vector2.down * 2);
+                //位置変更
+            rigid2D.position =- Vector2.down * 0.1f;
         }
     }
 }
